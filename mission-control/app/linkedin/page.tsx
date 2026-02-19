@@ -17,9 +17,9 @@ export default function LinkedInPage() {
   const [isPosting, setIsPosting] = useState(false)
   const [result, setResult] = useState<{success: boolean, message: string} | null>(null)
 
-  const handlePost = async () =>content.trim()) return {
-    if (!
-    
+  const handlePost = async () => {
+    if (!content.trim()) return
+
     const newPost: Post = {
       id: Date.now().toString(),
       content,
