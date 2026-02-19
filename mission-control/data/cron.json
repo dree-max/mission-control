@@ -1,0 +1,50 @@
+{
+  "lastUpdated": "2026-02-19T04:48:00Z",
+  "jobs": [
+    {
+      "id": "jarvis-heartbeat",
+      "name": "Jarvis Heartbeat",
+      "agent": "Jarvis",
+      "time": "08:00",
+      "schedule": "Daily at 8:00 AM",
+      "status": "error",
+      "lastError": "MiniMax auth failed - invalid API key"
+    },
+    {
+      "id": "fury-heartbeat",
+      "name": "Fury Heartbeat",
+      "agent": "Fury",
+      "time": "09:00",
+      "schedule": "Daily at 9:00 AM",
+      "status": "error",
+      "lastError": "Rate limited - MiniMax & Ollama"
+    },
+    {
+      "id": "loki-heartbeat",
+      "name": "Loki Heartbeat",
+      "agent": "Loki",
+      "time": "10:00",
+      "schedule": "Daily at 10:00 AM",
+      "status": "error",
+      "lastError": "Rate limited - MiniMax & Ollama"
+    },
+    {
+      "id": "vision-heartbeat",
+      "name": "Vision Heartbeat",
+      "agent": "Vision",
+      "time": "11:00",
+      "schedule": "Daily at 11:00 AM",
+      "status": "error",
+      "lastError": "Rate limited - MiniMax & Ollama"
+    },
+    {
+      "id": "quill-heartbeat",
+      "name": "Quill Heartbeat",
+      "agent": "Quill",
+      "time": "12:00",
+      "schedule": "Daily at 12:00 PM",
+      "status": "error",
+      "lastError": "Rate limited - MiniMax & Ollama"
+    }
+  ]
+}
