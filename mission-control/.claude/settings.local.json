@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git push:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git rebase:*)",
+      "Bash(git reset:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(gh repo view:*)",
+      "Bash(git filter-branch:*)",
+      "Bash(pip show:*)",
+      "Bash(tar:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(git fetch:*)",
+      "WebFetch(domain:api.github.com)",
+      "Bash(npm run build)",
+      "Bash(npm install:*)",
+      "Bash(npx vercel:*)",
+      "WebFetch(domain:vercel.com)",
+      "WebFetch(domain:my-mission-control.vercel.app)",
+      "WebFetch(domain:my-mission-control-ivan-driwales-projects.vercel.app)",
+      "WebFetch(domain:my-mission-control-git-main-ivan-driwales-projects.vercel.app)"
+    ]
+  }
+}
