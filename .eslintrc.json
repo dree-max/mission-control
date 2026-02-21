@@ -1,1 +1,1 @@
-{\n  "extends": ["next/core-web-vitals", "next/typescript"]\n}
+{"extends":["next/core-web-vitals","next/typescript"]}
