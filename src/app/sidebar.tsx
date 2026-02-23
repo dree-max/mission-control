@@ -10,6 +10,7 @@ import {
   MemoryStick,
   Users,
   Building2,
+  Linkedin,
 } from "lucide-react";
 
 const navItems = [
@@ -17,6 +18,7 @@ const navItems = [
   { href: "/tasks", label: "Tasks", icon: CheckSquare },
   { href: "/pipeline", label: "Pipeline", icon: Film },
   { href: "/calendar", label: "Calendar", icon: Calendar },
+  { href: "/linkedin", label: "LinkedIn", icon: Linkedin },
   { href: "/memory", label: "Memory", icon: MemoryStick },
   { href: "/team", label: "Team", icon: Users },
   { href: "/office", label: "Office", icon: Building2 },
