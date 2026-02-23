@@ -11,12 +11,14 @@ import {
   Users,
   Building2,
   Linkedin,
+  FileText,
 } from "lucide-react";
 
 const navItems = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },
   { href: "/tasks", label: "Tasks", icon: CheckSquare },
   { href: "/pipeline", label: "Pipeline", icon: Film },
+  { href: "/content", label: "Content", icon: FileText },
   { href: "/calendar", label: "Calendar", icon: Calendar },
   { href: "/linkedin", label: "LinkedIn", icon: Linkedin },
   { href: "/memory", label: "Memory", icon: MemoryStick },
