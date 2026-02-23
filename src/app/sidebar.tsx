@@ -14,18 +14,16 @@ import {
   FileText,
 } from "lucide-react";
 
-const basePath = "/mission-control";
-
 const navItems = [
-  { href: basePath + "/", label: "Dashboard", icon: LayoutDashboard },
-  { href: basePath + "/tasks", label: "Tasks", icon: CheckSquare },
-  { href: basePath + "/pipeline", label: "Pipeline", icon: Film },
-  { href: basePath + "/content", label: "Content", icon: FileText },
-  { href: basePath + "/calendar", label: "Calendar", icon: Calendar },
-  { href: basePath + "/linkedin", label: "LinkedIn", icon: Linkedin },
-  { href: basePath + "/memory", label: "Memory", icon: MemoryStick },
-  { href: basePath + "/team", label: "Team", icon: Users },
-  { href: basePath + "/office", label: "Office", icon: Building2 },
+  { href: "/", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/tasks", label: "Tasks", icon: CheckSquare },
+  { href: "/pipeline", label: "Pipeline", icon: Film },
+  { href: "/content", label: "Content", icon: FileText },
+  { href: "/calendar", label: "Calendar", icon: Calendar },
+  { href: "/linkedin", label: "LinkedIn", icon: Linkedin },
+  { href: "/memory", label: "Memory", icon: MemoryStick },
+  { href: "/team", label: "Team", icon: Users },
+  { href: "/office", label: "Office", icon: Building2 },
 ];
 
 export default function Sidebar() {
