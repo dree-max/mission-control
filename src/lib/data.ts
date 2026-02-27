@@ -19,6 +19,14 @@ export const tasks: Task[] = [
   { id: "2", title: "Write LinkedIn posts", description: "Draft 3 posts for the week", assignee: "MarvelSquad", status: "In Progress", createdAt: "2026-02-21" },
   { id: "3", title: "Research AI tools", description: "Find new AI tools", assignee: "MarvelSquad", status: "Review", createdAt: "2026-02-20" },
   { id: "4", title: "Setup cron jobs", description: "Automate daily backup", assignee: "Ivan", status: "Done", createdAt: "2026-02-19" },
+  { id: "5", title: "Post to LinkedIn", description: "Daily content post", assignee: "MarvelSquad", status: "Inbox", createdAt: "2026-02-27" },
+  { id: "6", title: "Update website content", description: "Add new blog posts", assignee: "MarvelSquad", status: "Inbox", createdAt: "2026-02-27" },
+  { id: "7", title: "Review content strategy", description: "Weekly review", assignee: "MarvelSquad", status: "Assigned", createdAt: "2026-02-27" },
+  { id: "8", title: "Check analytics", description: "Review metrics", assignee: "Ivan", status: "Inbox", createdAt: "2026-02-27" },
+  { id: "9", title: "Fix LinkedIn API", description: "Token refresh issue", assignee: "Kagu", status: "In Progress", createdAt: "2026-02-26" },
+  { id: "10", title: "Deploy to Vercel", description: "Push latest build", assignee: "Kagu", status: "Done", createdAt: "2026-02-25" },
+  { id: "11", title: "Team standup", description: "Daily sync", assignee: "Ivan", status: "Done", createdAt: "2026-02-24" },
+  { id: "12", title: "Content approval", description: "Review MarvelSquad posts", assignee: "Ivan", status: "Review", createdAt: "2026-02-27" },
 ];
 
 // ===== CONTENT / PIPELINE =====
@@ -42,6 +50,10 @@ export const contentItems: ContentItem[] = [
   { id: "2", title: "How to use OpenClaw", notes: "Tutorial for beginners", script: "Welcome to this tutorial...", images: [], stage: "Script", status: "draft", createdAt: "2026-02-23" },
   { id: "3", title: "Productivity Tips", notes: "5 tips for remote work", script: "", images: ["thumb1.png"], stage: "Thumbnail", status: "pending", createdAt: "2026-02-22" },
   { id: "4", title: "5 Ways AI is Transforming Small Business", notes: "Blog post for website", script: "", images: [], stage: "Published", status: "posted", platform: "LinkedIn", createdAt: "2026-02-21" },
+  { id: "5", title: "AI Implementation Guide", notes: "Comprehensive guide", script: "", images: [], stage: "Ideas", status: "draft", createdAt: "2026-02-27" },
+  { id: "6", title: "Future of AI in Business", notes: "Thought leadership piece", script: "", images: [], stage: "Script", status: "draft", createdAt: "2026-02-26" },
+  { id: "7", title: "Case Study: Startup AI", notes: "Client success story", script: "", images: [], stage: "Ideas", status: "draft", createdAt: "2026-02-25" },
+  { id: "8", title: "Weekly AI News", notes: "Curated news roundup", script: "", images: [], stage: "Published", status: "posted", platform: "LinkedIn", createdAt: "2026-02-20" },
 ];
 
 // ===== SOCIAL POSTS =====
