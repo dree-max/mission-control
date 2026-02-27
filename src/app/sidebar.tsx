@@ -16,6 +16,7 @@ import {
   Menu,
   X,
   Zap,
+  Rocket,
 } from "lucide-react";
 
 const navItems = [
@@ -23,6 +24,7 @@ const navItems = [
   { href: "/tasks", label: "Tasks", icon: CheckSquare },
   { href: "/pipeline", label: "Pipeline", icon: Film },
   { href: "/content", label: "Content", icon: FileText },
+  { href: "/services", label: "Services", icon: Rocket },
   { href: "/calendar", label: "Calendar", icon: Calendar },
   { href: "/linkedin", label: "LinkedIn", icon: Linkedin },
   { href: "/memory", label: "Memory", icon: MemoryStick },
