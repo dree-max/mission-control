@@ -5,8 +5,8 @@ import { stats, tasks, contentItems, posts, agents } from "@/lib/data";
 export default function Dashboard() {
   const dashboardStats = [
     { label: "Active Tasks", value: stats.tasksInProgress, icon: CheckSquare, color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20", href: "/tasks" },
-    { label: "Content Items", value: stats.contentDraft, icon: Film, color: "text-purple-400", bg: "bg-purple-500/10", border: "border-purple-500/20", href: "/pipeline" },
-    { label: "Posts", value: stats.postsPublished, icon: Calendar, color: "text-green-400", bg: "bg-green-500/10", border: "border-green-500/20", href: "/content" },
+    { label: "Content Items", value: stats.totalContent, icon: Film, color: "text-purple-400", bg: "bg-purple-500/10", border: "border-purple-500/20", href: "/pipeline" },
+    { label: "Scheduled Tasks", value: stats.totalTasks, icon: Calendar, color: "text-green-400", bg: "bg-green-500/10", border: "border-green-500/20", href: "/tasks" },
     { label: "Active Agents", value: stats.activeAgents, icon: Users, color: "text-orange-400", bg: "bg-orange-500/10", border: "border-orange-500/20", href: "/team" },
   ];
 
@@ -24,7 +24,7 @@ export default function Dashboard() {
         <p className="text-slate-400">Welcome to Mission Control</p>
       </div>
 
-      {/* Stats Grid - Responsive */}
+      {/* Stats Grid - All Clickable Links */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {dashboardStats.map((stat) => {
           const Icon = stat.icon;
@@ -32,7 +32,7 @@ export default function Dashboard() {
             <Link
               key={stat.label}
               href={stat.href}
-              className={`cyber-card rounded-xl p-5 ${stat.border} hover:scale-[1.02] transition-transform cursor-pointer`}
+              className={`cyber-card rounded-xl p-5 ${stat.border} hover:scale-[1.02] hover:border-cyan-500/40 transition-all cursor-pointer block`}
             >
               <div className="flex items-center justify-between">
                 <div>
@@ -100,6 +100,7 @@ export default function Dashboard() {
                 <span className={`px-2 py-1 rounded text-xs ${
                   task.status === "Done" ? "bg-green-900/50 text-green-400" :
                   task.status === "In Progress" ? "bg-blue-900/50 text-blue-400" :
+                  task.status === "Review" ? "bg-yellow-900/50 text-yellow-400" :
                   "bg-slate-700 text-slate-400"
                 }`}>
                   {task.status}
