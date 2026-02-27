@@ -2,21 +2,12 @@
 
 import { useState } from "react";
 import { Plus, X, FileText, Image } from "lucide-react";
+import Link from "next/link";
+import { contentItems as initialContent, ContentItem, ContentStage } from "@/lib/data";
 
-type Stage = "Ideas" | "Script" | "Thumbnail" | "Filming" | "Published";
+const stages: ContentStage[] = ["Ideas", "Script", "Thumbnail", "Filming", "Published"];
 
-interface ContentItem {
-  id: string;
-  title: string;
-  notes: string;
-  script: string;
-  images: string[];
-  stage: Stage;
-}
-
-const stages: Stage[] = ["Ideas", "Script", "Thumbnail", "Filming", "Published"];
-
-const stageColors: Record<Stage, string> = {
+const stageColors: Record<ContentStage, string> = {
   "Ideas": "bg-yellow-600/20 text-yellow-400 border-yellow-600/30",
   "Script": "bg-blue-600/20 text-blue-400 border-blue-600/30",
   "Thumbnail": "bg-purple-600/20 text-purple-400 border-purple-600/30",
@@ -24,24 +15,26 @@ const stageColors: Record<Stage, string> = {
   "Published": "bg-green-600/20 text-green-400 border-green-600/30",
 };
 
-const initialContent: ContentItem[] = [
-  { id: "1", title: "AI Tools Review 2026", notes: "Top 10 AI tools for creators", script: "", images: [], stage: "Ideas" },
-  { id: "2", title: "How to use OpenClaw", notes: "Tutorial for beginners", script: "Welcome to this tutorial...", images: [], stage: "Script" },
-  { id: "3", title: "Productivity Tips", notes: "5 tips for remote work", script: "", images: ["thumb1.png"], stage: "Thumbnail" },
-];
-
 export default function PipelinePage() {
   const [content, setContent] = useState<ContentItem[]>(initialContent);
   const [showAddModal, setShowAddModal] = useState(false);
   const [newItem, setNewItem] = useState({ title: "", notes: "" });
 
-  const moveContent = (itemId: string, newStage: Stage) => {
+  const moveContent = (itemId: string, newStage: ContentStage) => {
     setContent(content.map(c => c.id === itemId ? { ...c, stage: newStage } : c));
   };
 
   const addContent = () => {
     if (!newItem.title) return;
-    const item: ContentItem = { id: Date.now().toString(), ...newItem, script: "", images: [], stage: "Ideas" };
+    const item: ContentItem = { 
+      id: Date.now().toString(), 
+      ...newItem, 
+      script: "", 
+      images: [], 
+      stage: "Ideas",
+      status: "draft",
+      createdAt: new Date().toISOString().split('T')[0]
+    };
     setContent([...content, item]);
     setShowAddModal(false);
     setNewItem({ title: "", notes: "" });
@@ -57,6 +50,13 @@ export default function PipelinePage() {
         <button onClick={() => setShowAddModal(true)} className="flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium hover:bg-blue-700">
           <Plus className="h-4 w-4" /> Add Content
         </button>
+      </div>
+
+      {/* Quick Links */}
+      <div className="flex gap-4 mb-6">
+        <Link href="/tasks" className="text-sm text-cyan-400 hover:underline">→ Tasks</Link>
+        <Link href="/content" className="text-sm text-purple-400 hover:underline">→ Content Strategy</Link>
+        <Link href="/team" className="text-sm text-green-400 hover:underline">→ Team</Link>
       </div>
 
       <div className="flex gap-4 overflow-x-auto pb-4">
@@ -79,9 +79,18 @@ export default function PipelinePage() {
                   >
                     <p className="font-medium">{item.title}</p>
                     {item.notes && <p className="text-xs text-zinc-500 mt-2 line-clamp-2">{item.notes}</p>}
-                    <div className="mt-3 flex items-center gap-2">
-                      {item.script && <span className="flex items-center gap-1 rounded bg-zinc-800 px-2 py-0.5 text-xs text-zinc-400"><FileText className="h-3 w-3" />Script</span>}
-                      {item.images.length > 0 && <span className="flex items-center gap-1 rounded bg-zinc-800 px-2 py-0.5 text-xs text-zinc-400"><Image className="h-3 w-3" />{item.images.length}</span>}
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        {item.script && <span className="flex items-center gap-1 rounded bg-zinc-800 px-2 py-0.5 text-xs text-zinc-400"><FileText className="h-3 w-3" />Script</span>}
+                        {item.images.length > 0 && <span className="flex items-center gap-1 rounded bg-zinc-800 px-2 py-0.5 text-xs text-zinc-400"><Image className="h-3 w-3" />{item.images.length}</span>}
+                      </div>
+                      <span className={`text-xs px-2 py-0.5 rounded ${
+                        item.status === "posted" ? "bg-green-900/50 text-green-400" :
+                        item.status === "pending" ? "bg-yellow-900/50 text-yellow-400" :
+                        "bg-slate-700 text-slate-400"
+                      }`}>
+                        {item.status}
+                      </span>
                     </div>
                   </div>
                 ))}

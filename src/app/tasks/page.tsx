@@ -2,39 +2,28 @@
 
 import { useState } from "react";
 import { Plus, GripVertical, X } from "lucide-react";
+import Link from "next/link";
+import { tasks as initialTasks, Task, TaskStatus, Assignee } from "@/lib/data";
 
-type Status = "Inbox" | "Assigned" | "In Progress" | "Review" | "Done";
-type Assignee = "Ivan" | "MarvelSquad";
-
-interface Task {
-  id: string;
-  title: string;
-  description: string;
-  assignee: Assignee;
-  status: Status;
-}
-
-const columns: Status[] = ["Inbox", "Assigned", "In Progress", "Review", "Done"];
-
-const initialTasks: Task[] = [
-  { id: "1", title: "Build website landing page", description: "Create the main landing page", assignee: "Ivan", status: "Inbox" },
-  { id: "2", title: "Write LinkedIn posts", description: "Draft 3 posts for the week", assignee: "MarvelSquad", status: "In Progress" },
-  { id: "3", title: "Research AI tools", description: "Find new AI tools", assignee: "MarvelSquad", status: "Review" },
-  { id: "4", title: "Setup cron jobs", description: "Automate daily backup", assignee: "Ivan", status: "Done" },
-];
+const columns: TaskStatus[] = ["Inbox", "Assigned", "In Progress", "Review", "Done"];
 
 export default function TasksPage() {
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [showAddModal, setShowAddModal] = useState(false);
   const [newTask, setNewTask] = useState({ title: "", description: "", assignee: "Ivan" as Assignee });
 
-  const moveTask = (taskId: string, newStatus: Status) => {
+  const moveTask = (taskId: string, newStatus: TaskStatus) => {
     setTasks(tasks.map(t => t.id === taskId ? { ...t, status: newStatus } : t));
   };
 
   const addTask = () => {
     if (!newTask.title) return;
-    const task: Task = { id: Date.now().toString(), ...newTask, status: "Inbox" };
+    const task: Task = { 
+      id: Date.now().toString(), 
+      ...newTask, 
+      status: "Inbox",
+      createdAt: new Date().toISOString().split('T')[0]
+    };
     setTasks([...tasks, task]);
     setShowAddModal(false);
     setNewTask({ title: "", description: "", assignee: "Ivan" });
@@ -50,6 +39,13 @@ export default function TasksPage() {
         <button onClick={() => setShowAddModal(true)} className="flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium hover:bg-blue-700">
           <Plus className="h-4 w-4" /> Add Task
         </button>
+      </div>
+
+      {/* Quick Links */}
+      <div className="flex gap-4 mb-6">
+        <Link href="/pipeline" className="text-sm text-purple-400 hover:underline">→ Content Pipeline</Link>
+        <Link href="/team" className="text-sm text-green-400 hover:underline">→ Team</Link>
+        <Link href="/content" className="text-sm text-blue-400 hover:underline">→ Content</Link>
       </div>
 
       <div className="grid grid-cols-5 gap-4">
@@ -70,10 +66,11 @@ export default function TasksPage() {
                   >
                     <p className="font-medium text-sm">{task.title}</p>
                     {task.description && <p className="text-xs text-zinc-500 mt-1 line-clamp-2">{task.description}</p>}
-                    <div className="mt-2">
+                    <div className="mt-2 flex items-center justify-between">
                       <span className={`rounded px-2 py-0.5 text-xs ${task.assignee === "Ivan" ? "bg-orange-600/20 text-orange-400" : "bg-purple-600/20 text-purple-400"}`}>
                         {task.assignee}
                       </span>
+                      <span className="text-xs text-zinc-600">{task.createdAt}</span>
                     </div>
                   </div>
                 ))}
@@ -114,6 +111,6 @@ export default function TasksPage() {
           </div>
         </div>
       )}
-    </div>
   );
 }
+    </div>
