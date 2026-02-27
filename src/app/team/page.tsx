@@ -2,7 +2,7 @@
 
 import { Bot, Code, PenTool, Search, Palette, Users } from "lucide-react";
 import Link from "next/link";
-import { agents as teamAgents, Agent, AgentCategory } from "@/lib/data";
+import { agents as teamAgents, Agent, AgentCategory } from "../../lib/data";
 
 const categoryIcons: Record<AgentCategory, React.ElementType> = { 
   lead: Users, content: PenTool, developer: Code, designer: Palette, researcher: Search 

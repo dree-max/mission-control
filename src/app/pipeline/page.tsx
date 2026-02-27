@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Plus, X, FileText, Image } from "lucide-react";
 import Link from "next/link";
-import { contentItems as initialContent, ContentItem, ContentStage } from "@/lib/data";
+import { contentItems as initialContent, ContentItem, ContentStage } from "../../lib/data";
 
 const stages: ContentStage[] = ["Ideas", "Script", "Thumbnail", "Filming", "Published"];
 

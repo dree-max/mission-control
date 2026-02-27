@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Plus, GripVertical, X } from "lucide-react";
 import Link from "next/link";
-import { tasks as initialTasks, Task, TaskStatus, Assignee } from "@/lib/data";
+import { tasks as initialTasks, Task, TaskStatus, Assignee } from "../../lib/data";
 
 const columns: TaskStatus[] = ["Inbox", "Assigned", "In Progress", "Review", "Done"];
 

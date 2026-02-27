@@ -1,6 +1,6 @@
 import { CheckSquare, Film, Calendar, Users, Activity, Clock, Zap, Rocket } from "lucide-react";
 import Link from "next/link";
-import { stats, tasks, contentItems, posts, agents } from "@/lib/data";
+import { stats, tasks, contentItems, agents } from "../lib/data";
 
 export default function Dashboard() {
   const dashboardStats = [

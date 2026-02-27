@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { posts, contentPillar, seoKeywords, stats, contentPillars } from '@/lib/data';
+import { posts, seoKeywords, stats, contentPillars } from "../../lib/data";
 
 const formatDate = (dateStr: string) => {
   const date = new Date(dateStr);
