@@ -27,6 +27,7 @@ export const tasks: Task[] = [
   { id: "10", title: "Deploy to Vercel", description: "Push latest build", assignee: "Kagu", status: "Done", createdAt: "2026-02-25" },
   { id: "11", title: "Team standup", description: "Daily sync", assignee: "Ivan", status: "Done", createdAt: "2026-02-24" },
   { id: "12", title: "Content approval", description: "Review MarvelSquad posts", assignee: "Ivan", status: "Review", createdAt: "2026-02-27" },
+  { id: "13", title: "Post Monday Motivation", description: "Day 1 - LinkedIn post", assignee: "MarvelSquad", status: "In Progress", createdAt: "2026-03-02" },
 ];
 
 // ===== CONTENT / PIPELINE =====
@@ -54,6 +55,7 @@ export const contentItems: ContentItem[] = [
   { id: "6", title: "Future of AI in Business", notes: "Thought leadership piece", script: "", images: [], stage: "Script", status: "draft", createdAt: "2026-02-26" },
   { id: "7", title: "Case Study: Startup AI", notes: "Client success story", script: "", images: [], stage: "Ideas", status: "draft", createdAt: "2026-02-25" },
   { id: "8", title: "Weekly AI News", notes: "Curated news roundup", script: "", images: [], stage: "Published", status: "posted", platform: "LinkedIn", createdAt: "2026-02-20" },
+  { id: "9", title: "Monday Motivation: Human-AI Collaboration", notes: "Day 1 - Motivation & Industry Insights", script: "Monday Motivation: The future of AI isn't about replacing humans. It's about amplifying human potential. At MoonlightAI, we believe the best results come from human-AI collaboration. What's your take?", images: [], stage: "Published", status: "pending", platform: "LinkedIn", createdAt: "2026-03-02" },
 ];
 
 // ===== SOCIAL POSTS =====
