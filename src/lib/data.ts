@@ -92,6 +92,22 @@ export const posts: Post[] = [
     status: "pending",
     createdAt: "2026-02-21T07:00:00Z",
     platform: "LinkedIn"
+  },
+  {
+    id: "4",
+    title: "5 AI Trends That Will Define 2026",
+    text: "Thread: 1) SLMs 2) AI Agents 3) Enterprise ROI 4) Multimodal AI 5) Government Regulation 6) What's next?",
+    status: "posted",
+    createdAt: "2026-03-01T10:00:00Z",
+    platform: "Twitter"
+  },
+  {
+    id: "5",
+    title: "Weekend Reflection",
+    text: "🌙 Great technology doesn't just impress—it empowers. At MoonlightAI, we end this week reminded of why we do what we do: to build AI that helps people thrive.",
+    status: "pending",
+    createdAt: "2026-03-01T18:00:00Z",
+    platform: "LinkedIn"
   }
 ];
 
