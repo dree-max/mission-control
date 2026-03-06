@@ -89,8 +89,8 @@ export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   // CSRF Origin validation for mutating requests
-  // Skip CSRF check in development/testing environments to allow cross-domain requests
-  const skipCsrfCheck = envFlag('DISABLE_CSRF_CHECK') || process.env.NODE_ENV !== 'production'
+  // Skip CSRF check in development/testing environments or when allowing any host
+  const skipCsrfCheck = envFlag('DISABLE_CSRF_CHECK') || allowAnyHost || process.env.NODE_ENV !== 'production'
   
   const method = request.method.toUpperCase()
   if (!skipCsrfCheck && ['POST', 'PUT', 'DELETE', 'PATCH'].includes(method)) {
