@@ -94,11 +94,20 @@ export function proxy(request: NextRequest) {
     const origin = request.headers.get('origin')
     if (origin) {
       let originHost: string
-      try { originHost = new URL(origin).host } catch { originHost = '' }
-      const requestHost = request.headers.get('host')?.split(',')[0]?.trim()
-        || request.nextUrl.host
+      try { originHost = new URL(origin).hostname } catch { originHost = '' }
+      
+      // Get the request host, trying multiple sources
+      const hostHeader = request.headers.get('host')?.split(',')[0]?.trim() || ''
+      const xForwardedHost = request.headers.get('x-forwarded-host')?.split(',')[0]?.trim() || ''
+      const nextUrlHost = request.nextUrl.hostname || ''
+      
+      // Extract just the hostname (without port) for comparison
+      const requestHostname = xForwardedHost.split(':')[0] 
+        || hostHeader.split(':')[0]
+        || nextUrlHost
         || ''
-      if (originHost && requestHost && originHost !== requestHost) {
+      
+      if (originHost && requestHostname && originHost !== requestHostname) {
         return NextResponse.json({ error: 'CSRF origin mismatch' }, { status: 403 })
       }
     }
