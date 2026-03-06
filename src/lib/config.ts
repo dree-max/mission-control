@@ -85,7 +85,14 @@ export const config = {
 
 export function ensureDirExists(dirPath: string) {
   if (!dirPath) return
-  if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath, { recursive: true })
+  try {
+    if (!fs.existsSync(dirPath)) {
+      fs.mkdirSync(dirPath, { recursive: true })
+    }
+  } catch (error) {
+    // Silently fail if directory cannot be created (e.g., in read-only environments)
+    // This is acceptable for serverless deployments where temp directories may not be writable
+    return false
   }
+  return true
 }
