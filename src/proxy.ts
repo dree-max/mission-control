@@ -107,7 +107,10 @@ export function proxy(request: NextRequest) {
         || nextUrlHost
         || ''
       
+      console.log('[v0] CSRF Check:', { originHost, requestHostname, origin, hostHeader, xForwardedHost, nextUrlHost })
+      
       if (originHost && requestHostname && originHost !== requestHostname) {
+        console.log('[v0] CSRF Mismatch detected:', { originHost, requestHostname })
         return NextResponse.json({ error: 'CSRF origin mismatch' }, { status: 403 })
       }
     }
