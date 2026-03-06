@@ -89,8 +89,11 @@ export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   // CSRF Origin validation for mutating requests
+  // Skip CSRF check in development/testing environments to allow cross-domain requests
+  const skipCsrfCheck = envFlag('DISABLE_CSRF_CHECK') || process.env.NODE_ENV !== 'production'
+  
   const method = request.method.toUpperCase()
-  if (['POST', 'PUT', 'DELETE', 'PATCH'].includes(method)) {
+  if (!skipCsrfCheck && ['POST', 'PUT', 'DELETE', 'PATCH'].includes(method)) {
     const origin = request.headers.get('origin')
     if (origin) {
       let originHost: string
@@ -107,10 +110,7 @@ export function proxy(request: NextRequest) {
         || nextUrlHost
         || ''
       
-      console.log('[v0] CSRF Check:', { originHost, requestHostname, origin, hostHeader, xForwardedHost, nextUrlHost })
-      
       if (originHost && requestHostname && originHost !== requestHostname) {
-        console.log('[v0] CSRF Mismatch detected:', { originHost, requestHostname })
         return NextResponse.json({ error: 'CSRF origin mismatch' }, { status: 403 })
       }
     }
